@@ -2,12 +2,14 @@ import {Component} from 'react'
 import Loader from 'react-loader-spinner'
 
 import Header from '../Header'
-import CourseCard from '../CourseCard'
-
 import {
+  MainDiv,
+  Card,
+  Image,
+  CardDiv,
+  MainHead,
+  Para,
   LoaderDiv,
-  MainHeading,
-  CourseDiv,
   FailureDiv,
   FailureImage,
   FailureHead,
@@ -22,30 +24,37 @@ const apiConstant = {
   failure: 'FAILURE',
 }
 
-class Home extends Component {
+class CardItem extends Component {
   state = {
-    courseList: [],
     apiStatus: apiConstant.initial,
+    courseDetail: [],
   }
 
   componentDidMount() {
-    this.getCourseList()
+    this.getCourseDetails()
   }
 
-  getCourseList = async () => {
+  getCourseDetails = async () => {
     this.setState({apiStatus: apiConstant.loading})
-    const apiUrl = 'https://apis.ccbp.in/te/courses'
+    console.log('loading')
+    const {match} = this.props
+    const {params} = match
+    const {id} = params
+    const apiUrl = `https://apis.ccbp.in/te/courses/${id}`
     const response = await fetch(apiUrl)
     if (response.ok) {
       const data = await response.json()
-      this.setState({courseList: data.courses, apiStatus: apiConstant.success})
+      this.setState({
+        courseDetail: data.course_details,
+        apiStatus: apiConstant.success,
+      })
     } else {
       this.setState({apiStatus: apiConstant.failure})
     }
   }
 
   onClickFailureButton = () => {
-    this.getCourseList()
+    this.getCourseDetails()
   }
 
   renderAllView = () => {
@@ -69,16 +78,17 @@ class Home extends Component {
   )
 
   renderSuccess = () => {
-    const {courseList} = this.state
+    const {courseDetail} = this.state
     return (
-      <>
-        <MainHeading>Courses</MainHeading>
-        <CourseDiv as="ul">
-          {courseList.map(each => (
-            <CourseCard each={each} key={each.id} />
-          ))}
-        </CourseDiv>
-      </>
+      <MainDiv>
+        <Card>
+          <Image src={courseDetail.image_url} alt="" />
+          <CardDiv>
+            <MainHead>{courseDetail.name}</MainHead>
+            <Para>{courseDetail.description}</Para>
+          </CardDiv>
+        </Card>
+      </MainDiv>
     )
   }
 
@@ -97,6 +107,7 @@ class Home extends Component {
   )
 
   render() {
+    const {courseDetail} = this.state
     return (
       <>
         <Header />
@@ -106,4 +117,4 @@ class Home extends Component {
   }
 }
 
-export default Home
+export default CardItem

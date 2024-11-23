@@ -1,20 +1,37 @@
 import styled from 'styled-components'
 
+export const MainDiv = styled.div`
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+export const Card = styled.div`
+  display: flex;
+  width: 60%;
+  height: 70%;
+`
+export const Image = styled.img`
+  width: 50%;
+`
+
+export const CardDiv = styled.div`
+  padding: 20px;
+`
+export const MainHead = styled.h1`
+  color: #1e293b;
+`
+
+export const Para = styled.p`
+  color: #64748b;
+`
 export const LoaderDiv = styled.div`
   height: 60vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-`
-export const MainHeading = styled.h1`
-  color: #1e293b;
-  padding-left: 30px;
-`
-export const CourseDiv = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
 `
 export const FailureDiv = styled.div`
   display: flex;
