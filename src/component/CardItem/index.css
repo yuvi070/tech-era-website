@@ -1,0 +1,24 @@
+.card-item-main-div {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.card-item-card {
+  display: flex;
+  width: 60%;
+  height: 70%;
+}
+.card-item-image {
+  width: 50%;
+}
+.card-item-card-div {
+  padding: 20px;
+}
+.card-item-para {
+  color: #64748b;
+}
+.card-item-main-head {
+  color: #1e293b;
+}

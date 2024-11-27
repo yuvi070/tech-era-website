@@ -1,16 +1,17 @@
 import {Link} from 'react-router-dom'
 
-import {HeaderDiv, Image} from './styled'
+import './index.css'
 
 const Header = () => (
-  <HeaderDiv>
+  <div className="header-div">
     <Link to="/">
-      <Image
+      <img
+        className="header-image"
         src="https://assets.ccbp.in/frontend/react-js/tech-era/website-logo-img.png"
         alt="website logo"
       />
     </Link>
-  </HeaderDiv>
+  </div>
 )
 
 export default Header

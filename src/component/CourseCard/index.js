@@ -1,17 +1,16 @@
 import {Link} from 'react-router-dom'
-import {List, Image, Para} from './styled'
 
 import './index.css'
 
 const CourseCard = props => {
   const {each} = props
   return (
-    <List>
+    <li className="course-card-list">
       <Link to={`/courses/${each.id}`} className="link-text">
-        <Image src={each.logo_url} alt="" />
-        <Para>{each.name}</Para>
+        <img className="course-card-image" src={each.logo_url} alt="" />
+        <p className="course-card-para">{each.name}</p>
       </Link>
-    </List>
+    </li>
   )
 }
 

@@ -4,16 +4,7 @@ import Loader from 'react-loader-spinner'
 import Header from '../Header'
 import CourseCard from '../CourseCard'
 
-import {
-  LoaderDiv,
-  MainHeading,
-  CourseDiv,
-  FailureDiv,
-  FailureImage,
-  FailureHead,
-  FailurePara,
-  FailureButton,
-} from './styled'
+import './index.css'
 
 const apiConstant = {
   initial: 'INITIAL',
@@ -63,37 +54,44 @@ class Home extends Component {
   }
 
   renderLoading = () => (
-    <LoaderDiv data-testid="loader">
+    <div className="loader-div" data-testid="loader">
       <Loader type="TailSpin" color="#00BFFF" height={50} width={50} />
-    </LoaderDiv>
+    </div>
   )
 
   renderSuccess = () => {
     const {courseList} = this.state
     return (
       <>
-        <MainHeading>Courses</MainHeading>
-        <CourseDiv as="ul">
+        <h1 className="main-heading">Courses</h1>
+        <ul className="ul-container">
           {courseList.map(each => (
             <CourseCard each={each} key={each.id} />
           ))}
-        </CourseDiv>
+        </ul>
       </>
     )
   }
 
   renderFailure = () => (
-    <FailureDiv>
-      <FailureImage
+    <div className="failure-div">
+      <img
+        className="failure-image"
         src="https://assets.ccbp.in/frontend/react-js/tech-era/failure-img.png"
         alt="failure view"
       />
-      <FailureHead>Oops! Something Went Wrong</FailureHead>
-      <FailurePara>
+      <h1 className="failure-head">Oops! Something Went Wrong</h1>
+      <p className="failure-para">
         We cannot seem to find the page you are looking for.
-      </FailurePara>
-      <FailureButton onClick={this.onClickFailureButton}>Retry</FailureButton>
-    </FailureDiv>
+      </p>
+      <button
+        type="button"
+        className="failure-button"
+        onClick={this.onClickFailureButton}
+      >
+        Retry
+      </button>
+    </div>
   )
 
   render() {

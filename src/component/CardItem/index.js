@@ -2,20 +2,7 @@ import {Component} from 'react'
 import Loader from 'react-loader-spinner'
 
 import Header from '../Header'
-import {
-  MainDiv,
-  Card,
-  Image,
-  CardDiv,
-  MainHead,
-  Para,
-  LoaderDiv,
-  FailureDiv,
-  FailureImage,
-  FailureHead,
-  FailurePara,
-  FailureButton,
-} from './styled'
+import './index.css'
 
 const apiConstant = {
   initial: 'INITIAL',
@@ -72,38 +59,49 @@ class CardItem extends Component {
   }
 
   renderLoading = () => (
-    <LoaderDiv data-testid="loader">
+    <div className="loader-div" data-testid="loader">
       <Loader type="TailSpin" color="#00BFFF" height={50} width={50} />
-    </LoaderDiv>
+    </div>
   )
 
   renderSuccess = () => {
     const {courseDetail} = this.state
     return (
-      <MainDiv>
-        <Card>
-          <Image src={courseDetail.image_url} alt="" />
-          <CardDiv>
-            <MainHead>{courseDetail.name}</MainHead>
-            <Para>{courseDetail.description}</Para>
-          </CardDiv>
-        </Card>
-      </MainDiv>
+      <div className="card-item-main-div">
+        <div className="card-item-card">
+          <img
+            className="card-item-image"
+            src={courseDetail.image_url}
+            alt=""
+          />
+          <div className="card-item-card-div">
+            <h1 className="card-item-main-head">{courseDetail.name}</h1>
+            <p className="card-item-para">{courseDetail.description}</p>
+          </div>
+        </div>
+      </div>
     )
   }
 
   renderFailure = () => (
-    <FailureDiv>
-      <FailureImage
+    <div className="failure-div">
+      <img
+        className="failure-image"
         src="https://assets.ccbp.in/frontend/react-js/tech-era/failure-img.png"
         alt="failure view"
       />
-      <FailureHead>Oops! Something Went Wrong</FailureHead>
-      <FailurePara>
+      <h1 className="failure-head">Oops! Something Went Wrong</h1>
+      <p className="failure-para">
         We cannot seem to find the page you are looking for.
-      </FailurePara>
-      <FailureButton onClick={this.onClickFailureButton}>Retry</FailureButton>
-    </FailureDiv>
+      </p>
+      <button
+        type="button"
+        className="failure-button"
+        onClick={this.onClickFailureButton}
+      >
+        Retry
+      </button>
+    </div>
   )
 
   render() {

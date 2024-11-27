@@ -1,18 +1,20 @@
 import Header from '../Header'
-
-import {NotFoundDiv, Image, Heading, Para} from './styled'
+import './index.css'
 
 const NotFound = () => (
   <>
     <Header />
-    <NotFoundDiv>
-      <Image
+    <div className="not-found-div">
+      <img
+        className="not-found-image"
         src="https://assets.ccbp.in/frontend/react-js/tech-era/not-found-img.png"
         alt="not found"
       />
-      <Heading>Page Not Found</Heading>
-      <Para>We are sorry, the page you requested could not be found.</Para>
-    </NotFoundDiv>
+      <h1 className="not-found-head">Page Not Found</h1>
+      <p className="not-found-para">
+        We are sorry, the page you requested could not be found.
+      </p>
+    </div>
   </>
 )
 

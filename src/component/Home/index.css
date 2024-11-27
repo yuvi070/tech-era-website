@@ -1,0 +1,47 @@
+.main-heading {
+  color: #1e293b;
+  padding-left: 30px;
+}
+.ul-container {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+.loader-div {
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.failure-div {
+  display: flex;
+  height: 80vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.failure-image {
+  width: 500px;
+}
+
+.failure-head {
+  color: #475569;
+}
+
+.failure-button {
+  background-color: #4656a1;
+  border: 0px;
+  border-radius: 6px;
+  width: 100px;
+  height: 30px;
+  padding: 5px;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.failure-para {
+  color: #64778b;
+}
